@@ -4,17 +4,19 @@ public class Filme {
     private String descricao;
     private String genero;
     private int duracao; // duração em minutos
+    private boolean filme3D;
 
     // Construtor
-    public Filme(String nome, String diretor, String descricao, String genero, int duracao) {
+    public Filme(String nome, String diretor, String descricao, String genero, int duracao, boolean filme3D) {
         this.nome = nome;
         this.diretor = diretor;
         this.descricao = descricao;
         this.genero = genero;
         this.duracao = duracao;
+        this.filme3D = filme3D;
     }
 
-    // Getters (Métodos de acesso)
+    // Getters
     public String getNome() {
         return nome;
     }
@@ -35,6 +37,10 @@ public class Filme {
         return duracao;
     }
 
+    public boolean isFilme3D() {
+        return filme3D;
+    }
+
     // Método toString() para exibir o filme de forma legível
     @Override
     public String toString() {
@@ -42,6 +48,7 @@ public class Filme {
                 "Diretor: " + diretor + "\n" +
                 "Descrição: " + descricao + "\n" +
                 "Gênero: " + genero + "\n" +
-                "Duração: " + duracao + " minutos";
+                "Duração: " + duracao + " minutos\n" +
+                "3D: " + (filme3D ? "Sim" : "Não");
     }
 }

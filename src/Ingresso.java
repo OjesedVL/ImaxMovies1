@@ -1,33 +1,26 @@
 public class Ingresso {
-    private Filme filme;         // Filme escolhido
-    private String tipoIngresso; // "Inteira" ou "Meia"
-    private String horarioSessao; // Horário da sessão, por exemplo "14:00"
+    private Filme filme;
+    private String tipoIngresso; // Inteira ou Meia
+    private String horario;
 
     // Construtor
-    public Ingresso(Filme filme, String tipoIngresso, String horarioSessao) {
+    public Ingresso(Filme filme, String tipoIngresso, String horario) throws IllegalArgumentException {
+        if (filme.isFilme3D()) {
+            throw new IllegalArgumentException("Filme 3D só pode ser associado a ingressos VIP.");
+        }
         this.filme = filme;
         this.tipoIngresso = tipoIngresso;
-        this.horarioSessao = horarioSessao;
+        this.horario = horario;
     }
 
-    // Getters (Métodos de acesso)
-    public Filme getFilme() {
-        return filme;
+    public void acessoLanchonete() {
+        System.out.println("Compre um ingresso VIP para acesso à lanchonete.");
     }
 
-    public String getTipoIngresso() {
-        return tipoIngresso;
-    }
-
-    public String getHorarioSessao() {
-        return horarioSessao;
-    }
-
-    // Método toString() para exibir o ingresso de forma legível
     @Override
     public String toString() {
-        return "Filme: " + filme.getNome() + "\n" +
-                "Tipo de Ingresso: " + tipoIngresso + "\n" +
-                "Sessão: " + horarioSessao;
+        return "Filme: " + filme.getNome() +
+                "\nTipo de Ingresso: " + tipoIngresso +
+                "\nHorário: " + horario;
     }
 }
